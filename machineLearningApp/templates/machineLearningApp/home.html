@@ -1,0 +1,144 @@
+{% extends 'machineLearningApp/base.html'%}
+{% block content %}
+{% if result %}
+<div class="alert alert-warning" role="alert">
+  <h4 class="alert-heading">Some Suggestions</h4>
+  <hr>
+  <p>These are some impactful factors for breast cancer.It is highly advised that this values in your case remains within these ranges otherwise you need to take necessary action.
+    <hr> 
+    {{suggestion}}
+  </p>
+</div>
+{% endif %}
+{% for message in messages %}
+{% if result == 0 %}
+<div class="alert alert-success" role="alert">
+    {{message}}
+  </div>
+  {% endif %}
+  {% if result == 1 %}
+  <div class="alert alert-danger" role="alert">
+      {{message}}
+    </div>
+    {% endif %}
+
+{% endfor %}
+  <div class="container">
+    <h1>Input your values to make predictions</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="input-group my-3">
+          <span class="input-group-text">radius_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "radius_mean">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">texture_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "texture_mean">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">perimeter_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "perimeter_mean">
+        </div>
+        <div class="input-group my-3">
+          <span class="input-group-text">area_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "area_mean">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">smoothness_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "smoothness_mean">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">compactness_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "compactness_mean">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">concavity_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "concavity_mean">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">concave_points_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "concave_points_mean">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">symmetry_mean</span>
+          <input type="text" aria-label="First name" class="form-control" name= "symmetry_mean">
+        </div>
+
+
+        <div class="input-group my-3">
+          <span class="input-group-text">radius_se</span>
+          <input type="text" aria-label="First name" class="form-control" name= "radius_se">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">perimeter_se</span>
+          <input type="text" aria-label="First name" class="form-control" name= "perimeter_se">
+        </div>
+        <div class="input-group my-3">
+          <span class="input-group-text">area_se</span>
+          <input type="text" aria-label="First name" class="form-control"name= "area_se">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">concave_points_se</span>
+          <input type="text" aria-label="First name" class="form-control"name= "concave_points_se">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">radius_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "radius_worst">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">texture_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "texture_worst">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">perimeter_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "perimeter_worst">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">area_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "area_worst">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">smoothness_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "smoothness_worst">
+        </div>
+        <div class="input-group my-3">
+          <span class="input-group-text">compactness_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "compactness_worst">
+        </div>
+
+
+        <div class="input-group my-3">
+          <span class="input-group-text">concavity_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "concavity_worst">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">concave_points_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "concave_points_worst">
+        </div>
+
+        <div class="input-group my-3">
+          <span class="input-group-text">symmetry_worst</span>
+          <input type="text" aria-label="First name" class="form-control" name= "symmetry_worst">
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+
+{% endblock %}

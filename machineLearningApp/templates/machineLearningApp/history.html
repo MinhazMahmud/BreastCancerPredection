@@ -1,0 +1,73 @@
+{% extends 'machineLearningApp/base.html'%}
+{% block content %}
+
+
+  <h1>All prediction history</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">radius_mean</th>
+        <th scope="col">texture_mean</th>
+        <th scope="col">perimeter_mean</th>
+        <th scope="col">area_mean</th>
+        <th scope="col">smoothness_mean</th>
+        <th scope="col">compactness_mean</th>
+        <th scope="col">concavity_mean</th>
+        <th scope="col">concave_points_mean</th>
+        <th scope="col">symmetry_mean</th>
+        <th scope="col">radius_se</th>
+        <th scope="col">perimeter_se</th>
+        <th scope="col">area_se</th>
+        <th scope="col">concave_points_se</th>
+        <th scope="col">radius_worst</th>
+        <th scope="col">texture_worst</th>
+        <th scope="col">perimeter_worst</th>
+        <th scope="col">area_worst</th>
+        <th scope="col">smoothness_worst</th>
+        <th scope="col">compactness_worst</th>
+        <th scope="col">concavity_worst</th>
+        <th scope="col">concave_points_worst</th>
+        <th scope="col">symmetry_worst</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for record in records %}
+      <tr>
+        <td><button type="button" class="btn btn-light">{{record.radius_mean}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.texture_mean }}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.perimeter_mean}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.area_mean}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.smoothness_mean}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.compactness_mean}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.concavity_mean}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.concave_points_mean}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.symmetry_mean}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.radius_se}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.perimeter_se}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.area_se}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.concave_points_se}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.radius_worst}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.texture_worst}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.perimeter_worst}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.area_worst}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.smoothness_worst}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.compactness_worst}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.concavity_worst}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.concave_points_worst}}</button></td>
+        <td><button type="button" class="btn btn-light">{{record.symmetry_worst}}</button></td>
+        {% if record.result == 1 %}
+        <td><button type="button" class="btn btn-danger">Unsafe</button></td>
+        {% elif record.result == 0 %}
+        <td><button type="button" class="btn btn-success">Safe</button></td>
+        {% endif %}
+        
+        <td><button type="button" class="btn btn-secondary">{{record.date_created}}</button></td>
+      </tr>
+      {% endfor %}
+     
+    </tbody>
+  </table>
+
+{% endblock %}
